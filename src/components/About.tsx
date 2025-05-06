@@ -22,7 +22,7 @@ const About = () => {
   );
 
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: false });
 
   useEffect(() => {
     if (isInView) {
@@ -54,13 +54,13 @@ const About = () => {
       className="flex gap-10 justify-start w-full flex-col items-center"
       style={{ minHeight: "calc(100vh - 6rem)", maxHeight: "calc(100vh - 6rem)" }}
       initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
       transition={{ duration: 0.8 }}
     >
       <motion.h1
         className="text-white text-4xl mb-10 self-start mt-8"
         initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         About
@@ -69,7 +69,7 @@ const About = () => {
       <motion.div
         className="flex justify-center items-center gap-12 flex-wrap w-1/2"
         initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
         transition={{ duration: 0.6, delay: 0.4 }}
       >
         {rec.map((item) => (
@@ -77,7 +77,7 @@ const About = () => {
             key={item.description}
             className="bg-button w-48 h-40 rounded-3xl flex flex-col items-center justify-center p-5 min-w-fit"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
             transition={{ duration: 0.4, delay: 0.6 }}
           >
             <p className="text-6xl text-white">
@@ -91,7 +91,7 @@ const About = () => {
       <motion.div
         className="flex justify-center items-center flex-wrap w-1/2 gap-x-6 gap-y-2"
         initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
         transition={{ duration: 0.6, delay: 0.6 }}
       >
         {[
@@ -111,7 +111,7 @@ const About = () => {
             key={trait}
             className={`text-${trait.length > 15 ? "lg" : trait.length > 10 ? "2xl" : "4xl"} text-${i % 2 === 0 ? "white" : "gray-400"}`}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
             transition={{ duration: 0.3, delay: 0.7 + i * 0.1 }}
           >
             {trait}
