@@ -122,19 +122,12 @@ function App() {
         </div>
       </section>
       <section
-        className="snap-start h-screen flex flex-col justify-center items-center px-48"
+        className="snap-start h-screen  justify-center items-center "
         id="contact"
         ref={contactRef}
       >
         <Contact />
         <div className="flex justify-center pb-4">
-          <motion.button
-            onClick={() => scrollToNext(contactRef)}
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
-            <CiCircleChevDown color={secondaryColor} size={90} />
-          </motion.button>
         </div>
       </section>
     </div>

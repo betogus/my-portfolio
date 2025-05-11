@@ -32,7 +32,7 @@ const Certificates = () => {
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center overflow-hidden">
+    <div className="w-full h-screen flex flex-col  justify-center overflow-hidden">
       <motion.h2
         className="text-white text-4xl mb-6"
         initial={{ opacity: 0, y: 30 }}
