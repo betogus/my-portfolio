@@ -5,6 +5,8 @@ import { useRef, useState } from "react";
 const Contact = () => {
   const formRef = useRef(null);
   const [status, setStatus] = useState("");
+  const ref = useRef(null);
+  
   const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
   const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
@@ -30,15 +32,20 @@ const Contact = () => {
   };
 
   return (
-    <div className="w-full h-screen flex flex-col px-12 justify-center overflow-hidden bg-gradient-to-b from-[#232432] to-[#1A1A22]">
+    <div ref={ref} className="w-full h-screen flex flex-col px-12 justify-center overflow-hidden bg-gradient-to-b from-[#232432] to-[#1A1A22]">
 
       <div className="relative z-10 w-full h-full flex flex-col md:flex-row items-center justify-center px-6 md:px-16 py-10 gap-10">
-        <motion.div
-          className="flex flex-col items-start text-left w-full md:w-1/2"
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+      <motion.div
+  className="flex flex-col items-start text-left w-full md:w-1/2"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }}
+  transition={{ duration: 0.6 }}
+  variants={{
+    hidden: { opacity: 0, x: -30 },
+    visible: { opacity: 1, x: 0 },
+  }}
+>
           <h2 className="text-white text-4xl sm:text-5xl mb-4">Get in Touch</h2>
           <p className="text-gray-300 mb-6 text-lg max-w-md">
             I'm always looking for exciting opportunities to collaborate on new projects or help solve real-world problems. Whether you have a question, a proposal, or just want to connect—let's talk!
@@ -71,13 +78,18 @@ const Contact = () => {
         </motion.div>
 
         <motion.form
-          ref={formRef}
-          onSubmit={sendEmail}
-          className="w-full md:w-1/2 p-6  flex flex-col gap-4"
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+  ref={formRef}
+  onSubmit={sendEmail}
+  className="w-full md:w-1/2 p-6 flex flex-col gap-4"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }}
+  transition={{ duration: 0.6 }}
+  variants={{
+    hidden: { opacity: 0, x: 30 },
+    visible: { opacity: 1, x: 0 },
+  }}
+>
           <input
             type="text"
             name="user_name"

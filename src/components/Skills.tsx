@@ -19,10 +19,7 @@ enum TypeSkills {
 const allSkills = [
   { label: "React", type: TypeSkills.FRONTEND },
   { label: "TypeScript", type: TypeSkills.FRONTEND },
-  { label: "Node.js", type: TypeSkills.BACKEND },
   { label: "Express", type: TypeSkills.BACKEND },
-  { label: "MongoDB", type: TypeSkills.DATABASE },
-  { label: "PostgreSQL", type: TypeSkills.DATABASE },
   { label: "Docker", type: TypeSkills.DEVOPS },
   { label: "Figma", type: TypeSkills.OTHERS },
   {label: 'react native', type: TypeSkills.FRONTEND},
@@ -32,7 +29,6 @@ const allSkills = [
   {label: 'Java', type: TypeSkills.BACKEND},
   {label: "Spring Boot", type: TypeSkills.BACKEND},
   {label: "TypeScript", type: TypeSkills.FRONTEND},
-  {label: "React", type: TypeSkills.FRONTEND},
   {label: "Redux", type: TypeSkills.FRONTEND},
   {label: "Tailwind CSS", type: TypeSkills.FRONTEND},
   {label: "Bootstrap", type: TypeSkills.FRONTEND},
@@ -57,7 +53,6 @@ const allSkills = [
   {label: "Slack", type: TypeSkills.OTHERS},
   {label: "Discord", type: TypeSkills.OTHERS},
   {label: "Trello", type: TypeSkills.OTHERS},
-  {label: "Figma", type: TypeSkills.OTHERS}, 
 ];
 
 
@@ -119,7 +114,7 @@ const Skills = () => {
               <MenuItem value={TypeSkills.DEVOPS}>DEVOPS</MenuItem>
               <MenuItem value={TypeSkills.FRONTEND}>FRONTEND</MenuItem>
               <MenuItem value={TypeSkills.OTHERS}>OTHERS</MenuItem>
-              <MenuItem value="NONE">NONE</MenuItem>
+              <MenuItem value="NONE">ALL</MenuItem>
             </Select>
           </FormControl>
           <InputBase

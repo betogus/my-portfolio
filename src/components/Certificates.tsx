@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 
 // Certificados
 import ReactNativeCertificate from "../assets/certificates/Desarrollo de Aplicaciones (English).png";
@@ -13,6 +13,7 @@ import NoCountryCertificate from "../assets/certificates/No Country.jpg";
 import BackendCertificate from "../assets/certificates/Programacion Backend (English).png";
 import FullStackCertificate from "../assets/certificates/Programacion Full Stack.png";
 import ReactCertificate from "../assets/certificates/React Js (English).png";
+import JavaJREJDKCertificate from "../assets/certificates/Java JRE y JDK.jpg";
 
 const certificates = [
   ReactNativeCertificate,
@@ -26,43 +27,46 @@ const certificates = [
   BackendCertificate,
   FullStackCertificate,
   ReactCertificate,
+  JavaJREJDKCertificate
 ];
 
 const Certificates = () => {
   const [selected, setSelected] = useState<string | null>(null);
-
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false });
+  
   return (
-    <div className="w-full h-screen flex flex-col  justify-center overflow-hidden">
+    <div ref={ref} className="w-full h-screen flex flex-col  justify-center overflow-hidden">
       <motion.h2
         className="text-white text-4xl mb-6"
         initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
         transition={{ duration: 0.6 }}
       >
         Certificates
       </motion.h2>
 
       <motion.div
-        className="flex gap-6 overflow-x-auto px-6 pb-4 w-full max-w-7xl custom-scroll-x"
+        className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl w-full mx-auto"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.6 }}
+        animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
+
+        transition={{ delay: 0.3, duration: 0.6 }}
       >
         {certificates.map((src, i) => (
           <motion.div
             key={i}
-            className="min-w-[260px] md:min-w-[320px] h-[200px] md:h-[220px] bg-[#2b2c40] rounded-2xl shadow-xl flex items-center justify-center cursor-pointer"
-            whileHover={{ scale: 1.05 }}
-            initial={{ opacity: 0, y: 20 }}
+            className="bg-[#2b2c40] rounded-xl overflow-hidden shadow-lg cursor-pointer hover:scale-[1.02] transition-transform"
             whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.05 }}
             onClick={() => setSelected(src)}
           >
             <img
               src={src}
-              alt={`Cert ${i}`}
-              className="w-full h-full object-contain p-4"
+              alt={`Certificate ${i}`}
+              className="w-full h-[200px] object-contain p-4"
             />
           </motion.div>
         ))}

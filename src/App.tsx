@@ -8,6 +8,7 @@ import Recommendations from "./components/Recommendations";
 import Experience from "./components/Experience";
 import Certificates from "./components/Certificates";
 import Contact from "./components/Contact";
+import Project from "./components/Projects";
 
 const secondaryColor = "#00DF70";
 
@@ -18,6 +19,7 @@ function App() {
   const experienceRef = useRef<HTMLDivElement>(null);
   const certificatesRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
+  const projectRef = useRef<HTMLDivElement>(null);
 
   const scrollToNext = (ref: React.RefObject<HTMLDivElement>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
@@ -47,6 +49,22 @@ function App() {
         id="about"
       >
         <About />
+        <div className="flex justify-center pb-4">
+          <motion.button
+            onClick={() => scrollToNext(projectRef)}
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            <CiCircleChevDown color={secondaryColor} size={90} />
+          </motion.button>
+        </div>
+      </section>
+      <section
+        className="snap-start h-screen flex flex-col justify-between items-center px-48"
+        ref={projectRef}
+        id="projects"
+      >
+        <Project />
         <div className="flex justify-center pb-4">
           <motion.button
             onClick={() => scrollToNext(skillsRef)}

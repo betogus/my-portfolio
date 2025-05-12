@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Experience {
   year: string;
@@ -42,7 +42,6 @@ const experiences: Experience[] = [
 const Experience = () => {
   const [openYear, setOpenYear] = useState<string | null>(null);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
 
   const toggleYear = (year: string) => {
     setOpenYear(prev => (prev === year ? null : year));
@@ -51,13 +50,28 @@ const Experience = () => {
   return (
     <div  ref={ref} className="w-full flex flex-col gap-4 px-4 h-full justify-center">
       <motion.h1
-          className="text-white text-4xl mb-10 self-start mt-8"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
+  className="text-white text-4xl mb-10 self-start mt-8"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }}
+  transition={{ duration: 0.6, delay: 0.2 }}
+  variants={{
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 },
+  }}
+>
           Experience
         </motion.h1>
+        <motion.div
+        initial="hidden"
+        className="flex flex-col gap-6 w-full px-8 py-6"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        variants={{
+          hidden: { opacity: 0, y: 30 },
+          visible: { opacity: 1, y: 0 },
+        }}>
       {experiences.map((exp, index) => (
         <div
           key={index}
@@ -96,8 +110,10 @@ const Experience = () => {
               </motion.ul>
             )}
           </AnimatePresence>
+          
         </div>
       ))}
+      </motion.div>
     </div>
   );
 };
