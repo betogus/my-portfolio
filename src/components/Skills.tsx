@@ -122,6 +122,17 @@ const Skills = () => {
             className="col-span-3 bg-[#1c1c2b] text-white px-4 py-2 rounded-md border border-[#4E549B]"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            sx={{
+              color: "#ccc", 
+              "& .MuiInputBase-input::placeholder": {
+                color: "#888", 
+                opacity: 1,
+              },
+              backgroundColor: "#1c1c2b",
+              border: "1px solid #4E549B",
+              padding: "8px 16px",
+              borderRadius: "6px",
+            }}
           />
         </div>
 

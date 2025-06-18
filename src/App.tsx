@@ -9,6 +9,7 @@ import Experience from "./components/Experience";
 import Certificates from "./components/Certificates";
 import Contact from "./components/Contact";
 import Project from "./components/Projects";
+import Header from "./components/Header";
 
 const secondaryColor = "#00DF70";
 
@@ -27,6 +28,7 @@ function App() {
 
   return (
     <div className="bg-primary h-screen snap-y snap-mandatory overflow-y-scroll ">
+      <Header/>
       <section
         className="snap-start h-screen flex flex-col justify-between items-center px-48"
         id="home"

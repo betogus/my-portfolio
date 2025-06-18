@@ -11,7 +11,7 @@ const About = () => {
   const initialRec: Rec[] = [
     { description: "years experience", value: 1, postValue: "+" },
     { description: "simulations", value: 3, postValue: "" },
-    { description: "projects", value: 23, postValue: "" },
+    { description: "projects", value: 7, postValue: "" },
     { description: "certificates", value: 12, postValue: "" },
     { description: "years of study", value: 3, postValue: "" },
     { description: "languages", value: 2, postValue: "" },
