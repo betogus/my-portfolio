@@ -75,9 +75,9 @@ const Home = () => {
       <div className="flex justify-start w-full">
         <div className="w-44 h-12 ml-6 border-secondary border-2 rounded-full flex items-center text-white justify-evenly p-5 cursor-pointer transition-all ease-in-out duration-300 hover:scale-105 hover:border-white">
           <a
-            href="/CV- Gustavo Torres.pdf"
+            href="/cv-gustavo-torres.pdf"
             download
-            className="flex"
+            className="flex "
           >
             <GoDownload size={24} />
             <p>Check my CV</p>

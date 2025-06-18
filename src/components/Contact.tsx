@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
+//import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
 
 const Contact = () => {
-  const formRef = useRef(null);
+  //const formRef = useRef(null);
   //const [status, setStatus] = useState("");
   const ref = useRef(null);
 
