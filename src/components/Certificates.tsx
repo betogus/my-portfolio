@@ -7,19 +7,19 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Certificados
-import ReactNativeCertificate from "../assets/certificates/Desarrollo de Aplicaciones (English).png";
-import WebDevelopmentCertificate from "../assets/certificates/Desarrollo Web (ingles).png";
-import DevInFormationCertificate from "../assets/certificates/dev en formacion.jpg";
-import EFSETCertificate from "../assets/certificates/EF SET Certificate.jpg";
-import JavaAndDatabaseCertificate from "../assets/certificates/Java con Base de datos.jpg";
-import JavaObjectCertificate from "../assets/certificates/Java Orientado a Objetos.jpg";
-import JavascriptCertificate from "../assets/certificates/Javascript (English).png";
-import NoCountryCertificate from "../assets/certificates/No Country.jpg";
-import BackendCertificate from "../assets/certificates/Programacion Backend (English).png";
-import FullStackCertificate from "../assets/certificates/Programacion Full Stack.png";
-import ReactCertificate from "../assets/certificates/React Js (English).png";
-import JavaJREJDKCertificate from "../assets/certificates/Java JRE y JDK.jpg";
-import WordpressCertificate from "../assets/certificates/wordpress-certificate.jpg";
+import ReactNativeCertificate from "../assets/certificates/Desarrollo de Aplicaciones (English).webp";
+import WebDevelopmentCertificate from "../assets/certificates/Desarrollo Web (ingles).webp";
+import DevInFormationCertificate from "../assets/certificates/dev en formacion.webp";
+import EFSETCertificate from "../assets/certificates/EF SET Certificate.webp";
+import JavaAndDatabaseCertificate from "../assets/certificates/Java con Base de datos.webp";
+import JavaObjectCertificate from "../assets/certificates/Java Orientado a Objetos.webp";
+import JavascriptCertificate from "../assets/certificates/Javascript (English).webp";
+import NoCountryCertificate from "../assets/certificates/No Country.webp";
+import BackendCertificate from "../assets/certificates/Programacion Backend (English).webp";
+import FullStackCertificate from "../assets/certificates/Programacion Full Stack.webp";
+import ReactCertificate from "../assets/certificates/React Js (English).webp";
+import JavaJREJDKCertificate from "../assets/certificates/Java JRE y JDK.webp";
+import WordpressCertificate from "../assets/certificates/wordpress-certificate.webp";
 
 const certificates = [
   ReactNativeCertificate,

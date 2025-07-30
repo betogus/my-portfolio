@@ -1,13 +1,13 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import Argumento from "../assets/projects/Argumento.png";
-import JamGlass from "../assets/projects/Jam Glass.png";
-import ReHouse from "../assets/projects/rehouse.png";
-import LlantenAlmacen from "../assets/projects/Llanten almacen.png";
-import RenovaTuVestidor from "../assets/projects/renovatuvestidor.png";
-import Backend from "../assets/projects/backend.png";
-import StefEstudioCreativo from "../assets/projects/stefestudiocreativo.png";
-import GreenTech from "../assets/projects/greentech.png";
+import Argumento from "../assets/projects/Argumento.webp";
+import JamGlass from "../assets/projects/Jam Glass.webp";
+import ReHouse from "../assets/projects/rehouse.webp";
+import LlantenAlmacen from "../assets/projects/Llanten almacen.webp";
+import RenovaTuVestidor from "../assets/projects/renovatuvestidor.webp";
+import Backend from "../assets/projects/backend.webp";
+import StefEstudioCreativo from "../assets/projects/stefestudiocreativo.webp";
+import GreenTech from "../assets/projects/greentech.webp";
 
 interface ProjectData {
   title: string;

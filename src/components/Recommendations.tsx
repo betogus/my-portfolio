@@ -51,7 +51,7 @@ const Recommendations = () => {
           <motion.div
             key={index}
             className="bg-button rounded-3xl flex flex-col justify-center p-5 text-left
-                       w-full md:w-[300px] min-h-[220px]"
+                       w-full"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
             transition={{ duration: 0.4, delay: 0.6 + 0.2 * index }}
