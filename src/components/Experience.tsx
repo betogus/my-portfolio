@@ -35,7 +35,10 @@ const experiences: Experience[] = [
   },
   {
     year: "2024 - 2025",
-    list: ["Software Engineer - Ensolvers company"],
+    list: [
+      "Software Engineer - Ensolvers company",
+      "Wordpress course - Macweb"
+    ],
   },
 ];
 

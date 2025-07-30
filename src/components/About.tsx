@@ -51,14 +51,14 @@ const About = () => {
   return (
     <motion.div
       ref={ref}
-      className="flex gap-10 justify-start w-full flex-col items-center"
-      style={{ minHeight: "calc(100vh - 6rem)", maxHeight: "calc(100vh - 6rem)" }}
+      className="w-full flex flex-col items-center gap-10 px-4 py-10"
+      style={{ minHeight: "calc(100vh - 6rem)" }}
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
       transition={{ duration: 0.8 }}
     >
       <motion.h1
-        className="text-white text-4xl mb-10 self-start mt-8"
+        className="text-white text-3xl sm:text-4xl mb-6 self-start"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
         transition={{ duration: 0.6, delay: 0.2 }}
@@ -66,8 +66,9 @@ const About = () => {
         About
       </motion.h1>
 
+      {/* Stats boxes */}
       <motion.div
-        className="flex justify-center items-center gap-12 flex-wrap w-1/2"
+        className="w-full max-w-screen-lg flex justify-center flex-wrap gap-6"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
         transition={{ duration: 0.6, delay: 0.4 }}
@@ -75,21 +76,24 @@ const About = () => {
         {rec.map((item) => (
           <motion.div
             key={item.description}
-            className="bg-button w-48 h-40 rounded-3xl flex flex-col items-center justify-center p-5 min-w-fit"
+            className="bg-button w-40 h-36 sm:w-44 sm:h-40 rounded-3xl flex flex-col items-center justify-center p-4 min-w-fit"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
             transition={{ duration: 0.4, delay: 0.6 }}
           >
-            <p className="text-6xl text-white">
+            <p className="text-4xl sm:text-5xl text-white">
               {item.value} {item.postValue}
             </p>
-            <p className="text-lg text-gray-400">{item.description}</p>
+            <p className="text-sm sm:text-base text-gray-400 text-center">
+              {item.description}
+            </p>
           </motion.div>
         ))}
       </motion.div>
 
+      {/* Traits */}
       <motion.div
-        className="flex justify-center items-center flex-wrap w-1/2 gap-x-6 gap-y-2"
+        className="w-full max-w-screen-md flex justify-center items-center flex-wrap gap-x-4 gap-y-3 mt-6"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
         transition={{ duration: 0.6, delay: 0.6 }}
@@ -109,7 +113,9 @@ const About = () => {
         ].map((trait, i) => (
           <motion.p
             key={trait}
-            className={`text-${trait.length > 15 ? "lg" : trait.length > 10 ? "2xl" : "4xl"} text-${i % 2 === 0 ? "white" : "gray-400"}`}
+            className={`text-base sm:text-lg md:text-xl font-medium ${
+              i % 2 === 0 ? "text-white" : "text-gray-400"
+            }`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
             transition={{ duration: 0.3, delay: 0.7 + i * 0.1 }}

@@ -1,5 +1,10 @@
-import { useRef, useState } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Certificados
 import ReactNativeCertificate from "../assets/certificates/Desarrollo de Aplicaciones (English).png";
@@ -14,6 +19,7 @@ import BackendCertificate from "../assets/certificates/Programacion Backend (Eng
 import FullStackCertificate from "../assets/certificates/Programacion Full Stack.png";
 import ReactCertificate from "../assets/certificates/React Js (English).png";
 import JavaJREJDKCertificate from "../assets/certificates/Java JRE y JDK.jpg";
+import WordpressCertificate from "../assets/certificates/wordpress-certificate.jpg";
 
 const certificates = [
   ReactNativeCertificate,
@@ -27,52 +33,54 @@ const certificates = [
   BackendCertificate,
   FullStackCertificate,
   ReactCertificate,
-  JavaJREJDKCertificate
+  JavaJREJDKCertificate,
+  WordpressCertificate,
 ];
 
 const Certificates = () => {
   const [selected, setSelected] = useState<string | null>(null);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false });
-  
+
   return (
-    <div ref={ref} className="w-full h-screen flex flex-col  justify-center overflow-hidden">
+    <div className="w-full py-20">
       <motion.h2
-        className="text-white text-4xl mb-6"
+        className="text-white text-4xl mb-10 text-center"
         initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
         Certificates
       </motion.h2>
 
-      <motion.div
-        className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl w-full mx-auto"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
-
-        transition={{ delay: 0.3, duration: 0.6 }}
+      <Swiper
+        modules={[Navigation, Autoplay]}
+        navigation={true}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        loop={true}
+        spaceBetween={30}
+        breakpoints={{
+          0: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+        }}
+        className="max-w-7xl mx-auto"
       >
         {certificates.map((src, i) => (
-          <motion.div
-            key={i}
-            className="bg-[#2b2c40] rounded-xl overflow-hidden shadow-lg cursor-pointer hover:scale-[1.02] transition-transform"
-            whileInView={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: 20 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: i * 0.05 }}
-            onClick={() => setSelected(src)}
-          >
-            <img
-              src={src}
-              alt={`Certificate ${i}`}
-              className="w-full h-[200px] object-contain p-4"
-            />
-          </motion.div>
+          <SwiperSlide key={i}>
+            <motion.div
+              className="bg-[#2b2c40] rounded-xl overflow-hidden shadow-lg cursor-pointer hover:scale-[1.02] transition-transform"
+              whileHover={{ scale: 1.02 }}
+              onClick={() => setSelected(src)}
+            >
+              <img
+                src={src}
+                alt={`Certificate ${i}`}
+                className="w-full h-[200px] object-contain p-4"
+              />
+            </motion.div>
+          </SwiperSlide>
         ))}
-      </motion.div>
+      </Swiper>
 
-      {/* Modal con imagen ampliada */}
       <AnimatePresence>
         {selected && (
           <motion.div

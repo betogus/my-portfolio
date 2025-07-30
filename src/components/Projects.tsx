@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import Argumento from "../assets/projects/Argumento.png";
 import JamGlass from "../assets/projects/Jam Glass.png";
 import ReHouse from "../assets/projects/rehouse.png";
@@ -7,12 +7,13 @@ import LlantenAlmacen from "../assets/projects/Llanten almacen.png";
 import RenovaTuVestidor from "../assets/projects/renovatuvestidor.png";
 import Backend from "../assets/projects/backend.png";
 import StefEstudioCreativo from "../assets/projects/stefestudiocreativo.png";
+import GreenTech from "../assets/projects/greentech.png";
 
 interface ProjectData {
   title: string;
   description: string;
   image: string;
-  repo: string;
+  repo?: string;
   demo?: string;
 }
 
@@ -23,6 +24,12 @@ const projects: ProjectData[] = [
     image: StefEstudioCreativo,
     repo: "https://github.com/betogus/stefestudiocreativo",
     demo: "https://stefestudiocreativo.netlify.app/",
+  },
+  {
+    title: "Green Tech",
+    description: "Wordpress",
+    image: GreenTech,
+    demo: "https://green-tech.free.nf/",
   },
   {
     title: "Argumento Restaurante",
@@ -68,31 +75,42 @@ const projects: ProjectData[] = [
 
 const Project = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(0);
-
+  const ref = useRef(null);
+  const isInView = useInView(ref);
   const selectedProject = selectedIndex !== null ? projects[selectedIndex] : null;
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 mt-10">
-      <h2 className="text-4xl font-bold text-white mb-10">Projects</h2>
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
+      transition={{ duration: 1 }}
+      className="w-full max-w-7xl mx-auto px-4 py-12"
+    >
+      <h2 className="text-3xl sm:text-4xl font-bold text-white mb-10 text-center md:text-left">
+        Projects
+      </h2>
 
-      <div className="flex flex-col md:flex-row gap-8">
-        {/* Lista de botones */}
-        <div className="md:w-1/3 flex flex-col gap-4">
+      <div className="flex flex-col md:flex-row gap-6 md:gap-8">
+        {/* Project List */}
+        <div className="md:w-1/3 flex flex-col gap-3">
           {projects.map((project, index) => (
             <button
               key={index}
               onClick={() => setSelectedIndex(index)}
-              className={`w-full text-left px-6 py-4 rounded-xl font-semibold border border-[#00DF70] transition-all shadow-md hover:shadow-lg 
-                ${selectedIndex === index
+              className={`w-full text-left px-4 py-3 rounded-lg text-sm sm:text-base font-medium border border-[#00DF70] transition-all shadow-md hover:shadow-lg ${
+                selectedIndex === index
                   ? "bg-[#00DF70] text-black"
-                  : "text-[#00DF70] bg-transparent"}`}
+                  : "text-[#00DF70] bg-transparent"
+              }`}
             >
               {project.title}
             </button>
           ))}
         </div>
 
-        <div className="md:w-2/3">
+        {/* Project Detail */}
+        <div className="md:w-2/3 w-full">
           <AnimatePresence mode="wait">
             {selectedProject && (
               <motion.div
@@ -101,13 +119,15 @@ const Project = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
-                className="rounded-xl border border-[#00DF70] shadow-inner px-6 py-4"
+                className="rounded-xl border border-[#00DF70] shadow-inner px-5 py-4"
               >
-                <p className="text-[#00DF70] mb-4">{selectedProject.description}</p>
+                <p className="text-[#00DF70] mb-4 text-sm sm:text-base">
+                  {selectedProject.description}
+                </p>
                 <img
                   src={selectedProject.image}
                   alt={selectedProject.title}
-                  className="w-full rounded-lg mb-4 max-h-72 object-cover"
+                  className="w-full rounded-lg mb-4 max-h-64 sm:max-h-72 object-contain"
                 />
                 <div className="flex flex-wrap gap-4">
                   {selectedProject.demo && (
@@ -115,26 +135,28 @@ const Project = () => {
                       href={selectedProject.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                      className="px-4 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition"
                     >
                       See Demo
                     </a>
                   )}
-                  <a
-                    href={selectedProject.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-900 transition"
-                  >
-                    See on Github
-                  </a>
+                  {selectedProject.repo && (
+                    <a
+                      href={selectedProject.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 text-sm bg-gray-800 text-white rounded hover:bg-gray-900 transition"
+                    >
+                      See on Github
+                    </a>
+                  )}
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
