@@ -81,7 +81,7 @@ const Home = () => {
       {/* Botón de descarga */}
       <div className="w-full flex justify-center md:justify-start">
         <a
-          href="/cv-gustavo-torres.pdf"
+          href="/CV- Gustavo Torres.pdf"
           download
           className="w-48 h-12 border-secondary border-2 rounded-full flex items-center text-white justify-evenly px-4 cursor-pointer transition-all ease-in-out duration-300 hover:scale-105 hover:border-white"
         >
